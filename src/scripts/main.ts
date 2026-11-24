@@ -33,7 +33,8 @@ function heroTextLines(): TextLine[] {
     return {
       text,
       rect: { left: r.left, top: r.top, width: r.width, height: r.height },
-      font: `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`,
+      // El estilo va primero: «Ing.» es cursiva y el canvas debe dibujarla igual.
+      font: `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`,
       letterSpacing: cs.letterSpacing,
     };
   });
@@ -62,6 +63,7 @@ async function boot() {
     Promise.all([
       document.fonts.load('700 100px "Unbounded Variable"'),
       document.fonts.load('700 100px "Unbounded Outline"'),
+      document.fonts.load('italic 400 100px "Instrument Serif"'),
       document.fonts.ready,
     ]),
     wait(3000),

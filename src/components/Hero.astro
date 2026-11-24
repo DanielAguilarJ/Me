@@ -22,8 +22,11 @@ const h = t.hero;
         class="hero__eyebrow-tail">{h.eyebrow}</span>
     </p>
     <h1 class="hero__title" id="hero-title">
-      <span class="visually-hidden">{profile.fullName}</span>
-      <span class="hero__line" data-hero-line data-gl-avoid aria-hidden="true">{h.lines[0]}</span>
+      <span class="visually-hidden">{h.prefix} {profile.fullName}</span>
+      <span class="name-row">
+        <span class="hero__line name-prefix" data-hero-line data-gl-avoid aria-hidden="true">{h.prefix}</span>
+        <span class="hero__line" data-hero-line data-gl-avoid aria-hidden="true">{h.lines[0]}</span>
+      </span>
       <span class="hero__line hero__line--outline" data-hero-line data-gl-avoid aria-hidden="true">{h.lines[1]}</span>
     </h1>
     <div class="hero__meta" data-hero-fade data-gl-avoid>

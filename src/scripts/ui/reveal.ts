@@ -101,16 +101,22 @@ export function initReveals(reduced: boolean) {
 /** Revela el bloque del hero después de la intro de partículas. */
 export function heroIntro(reduced: boolean) {
   const tl = gsap.timeline();
-  const name = gsap.utils.toArray<HTMLElement>('[data-hero-line]');
+  const all = gsap.utils.toArray<HTMLElement>('[data-hero-line]');
   if (reduced) {
     gsap.set('[data-hero-fade], [data-hero-line]', { autoAlpha: 1 });
     return tl;
   }
+  // «Ing.» va en cursiva: la máscara por letra le recortaría la inclinación, así que sube entero.
+  const prefix = all.filter((el) => el.classList.contains('name-prefix'));
+  const name = all.filter((el) => !prefix.includes(el));
   name.forEach((line) => {
     const split = SplitText.create(line, { type: 'chars', mask: 'chars' });
     tl.from(split.chars, { yPercent: 120, duration: 1.3, ease: 'expo.out', stagger: 0.045 }, 0.05);
   });
   tl.set(name, { autoAlpha: 1 }, 0);
+  if (prefix.length) {
+    tl.fromTo(prefix, { autoAlpha: 0, yPercent: 70 }, { autoAlpha: 1, yPercent: 0, duration: 1.2, ease: 'expo.out' }, 0.05);
+  }
   tl.fromTo(
     '[data-hero-fade]',
     { autoAlpha: 0, y: 28 },

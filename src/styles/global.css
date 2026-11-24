@@ -1082,6 +1082,31 @@ main,
   -webkit-text-stroke: 1.5px var(--ink);
 }
 
+/* «Ing.» antes del nombre (hero e imagen para compartir): serif cursiva con el degradado
+   de los títulos, colgada a la altura de las mayúsculas. Los em son del tamaño del nombre. */
+.name-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.09em;
+}
+
+.name-prefix {
+  margin-top: 0.06em;
+  /* La cursiva sobresale de su caja: sin este margen el degradado le cortaría la punta. */
+  padding-right: 0.06em;
+  background: linear-gradient(95deg, var(--aqua) 10%, var(--sky) 60%, var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-serif);
+  font-size: 0.42em;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
 .hero__line--outline .char,
 .hero__line--outline div {
   -webkit-text-stroke: inherit;
@@ -2467,6 +2492,8 @@ main,
 }
 
 .capture-og__name {
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-display);
   font-size: 118px;
   font-weight: 700;
@@ -2649,6 +2676,11 @@ main,
 
   .hero__line--outline {
     -webkit-text-stroke-width: 1px;
+  }
+
+  /* En móvil el nombre es más chico: «Ing.» crece en proporción para seguir leyéndose. */
+  .hero__title .name-prefix {
+    font-size: 0.5em;
   }
 
   /* Nombre y "Portafolio · 2026" en dos líneas en lugar de un corte arbitrario. */

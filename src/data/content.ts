@@ -41,7 +41,7 @@ const es = {
     htmlLang: 'es-MX',
     ogLocale: 'es_MX',
     ogLocaleAlt: 'en_US',
-    title: 'Daniel Junco · Ingeniero en Energías Renovables · Python, C++ e IA',
+    title: 'Ing. Daniel Junco · Energías Renovables · Python, C++ e IA',
     description:
       'Portafolio de Kevin Daniel Aguilar Junco: ingeniero en Energías Renovables con 3 años de experiencia en Python, C++ e IA. Monitoreo del agua con IoT, visión computacional, datos geoespaciales e investigación de materiales sostenibles.',
     ogImage: '/og/og-es.jpg',
@@ -91,6 +91,8 @@ const es = {
   hero: {
     status: 'Disponible para nuevas oportunidades',
     eyebrow: 'Portafolio · 2026',
+    /** Título profesional que va antes del nombre en el hero y en la imagen para compartir. */
+    prefix: 'Ing.',
     lines: ['Daniel', 'Junco'],
     role: 'Ingeniero en Energías Renovables',
     stack: ['Python', 'C++', 'IA'],
@@ -519,7 +521,7 @@ const en: Content = {
     htmlLang: 'en',
     ogLocale: 'en_US',
     ogLocaleAlt: 'es_MX',
-    title: 'Daniel Junco · Renewable Energy Engineer · Python, C++ & AI',
+    title: 'Ing. Daniel Junco · Renewable Energy Engineer · Python, C++ & AI',
     description:
       'Portfolio of Kevin Daniel Aguilar Junco: Renewable Energy engineer with 3 years of experience in Python, C++ and AI. Water monitoring with IoT, computer vision, geospatial data and sustainable materials research.',
     ogImage: '/og/og-en.jpg',
@@ -564,6 +566,7 @@ const en: Content = {
   hero: {
     status: 'Open to new opportunities',
     eyebrow: 'Portfolio · 2026',
+    prefix: 'Ing.',
     lines: ['Daniel', 'Junco'],
     role: 'Renewable Energy Engineer',
     stack: ['Python', 'C++', 'AI'],
