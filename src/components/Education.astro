@@ -18,7 +18,10 @@ const e = t.education;
         <h3 class="edu-card__label">{e.degreeLabel}</h3>
         <p class="edu-card__title">{e.degree.title}</p>
         <p class="edu-card__school">{e.degree.school}</p>
-        <p class="edu-card__note"><span class="dot" aria-hidden="true"></span>{e.degree.note}</p>
+        <div class="edu-card__notes">
+          <p class="edu-card__note"><span class="dot dot--aqua" aria-hidden="true"></span>{e.degree.entry}</p>
+          <p class="edu-card__note"><span class="dot" aria-hidden="true"></span>{e.degree.note}</p>
+        </div>
       </article>
 
       <article class="edu-card edu-card--programs" data-reveal>

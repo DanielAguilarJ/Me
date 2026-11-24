@@ -127,7 +127,7 @@ const es = {
     label: 'Quién soy',
     title: 'Energía limpia, código e <em>inteligencia artificial</em>.',
     paragraphs: [
-      'Soy Kevin Daniel Aguilar Junco, ingeniero formado en Energías Renovables en la Universidad Autónoma de Aguascalientes, donde fui presidente estudiantil de mi carrera.',
+      'Soy Kevin Daniel Aguilar Junco, ingeniero formado en Energías Renovables en la Universidad Autónoma de Aguascalientes. Terminé la preparatoria a los 16 años y ese mismo año entré a la universidad, donde fui presidente estudiantil de mi carrera.',
       'Llevo 3 años construyendo con Python, C++ e IA: enseñé robótica con Arduino, desarrollé apps para clientes internacionales, validé datos geoespaciales para modelos de IA y fundé AquaGuard, una startup de monitoreo del agua con sensores IoT y visión computacional.',
       'Entre 2025 y 2026 llevé mi trabajo a Europa: participé en las summer schools de la University of South Bohemia (República Checa) con proyectos de IA para acuicultura e investigué materiales para productos sostenibles en la Technische Universität Chemnitz (Alemania) con una estancia IAESTE.',
       'Me interesa que la tecnología resuelva problemas reales de agua, energía y medio ambiente: del sensor al modelo y del laboratorio al producto.',
@@ -457,6 +457,7 @@ const es = {
     degree: {
       title: 'Ingeniería en Energías Renovables',
       school: 'Universidad Autónoma de Aguascalientes',
+      entry: 'Ingresé a los 16 años',
       note: 'Carta de término en trámite',
     },
     programsLabel: 'Programas internacionales',
@@ -599,7 +600,7 @@ const en: Content = {
     label: 'About me',
     title: 'Clean energy, code and <em>artificial intelligence</em>.',
     paragraphs: [
-      "I'm Kevin Daniel Aguilar Junco, an engineer trained in Renewable Energy at the Universidad Autónoma de Aguascalientes, where I was student president of my program.",
+      "I'm Kevin Daniel Aguilar Junco, an engineer trained in Renewable Energy at the Universidad Autónoma de Aguascalientes. I finished high school at 16 and started university that same year, where I later served as student president of my program.",
       "I've spent 3 years building with Python, C++ and AI: I taught robotics with Arduino, developed apps for international clients, validated geospatial data for AI models and founded AquaGuard, a water-monitoring startup using IoT sensors and computer vision.",
       'Between 2025 and 2026 I took my work to Europe: I joined the University of South Bohemia summer schools (Czech Republic) with AI projects for aquaculture, and researched materials for sustainable products at Technische Universität Chemnitz (Germany) through an IAESTE internship.',
       'I care about technology that solves real problems in water, energy and the environment: from sensor to model and from lab to product.',
@@ -924,6 +925,7 @@ const en: Content = {
     degree: {
       title: 'Renewable Energy Engineering',
       school: 'Universidad Autónoma de Aguascalientes',
+      entry: 'Started at 16',
       note: 'Completion letter pending',
     },
     programsLabel: 'International programs',

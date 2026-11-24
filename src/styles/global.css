@@ -2112,11 +2112,17 @@ main,
   font-size: 1.05rem;
 }
 
+.edu-card__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
 .edu-card__note {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 20px;
   padding: 6px 12px;
   border: 1px solid var(--line-strong);
   border-radius: 100px;
@@ -2127,9 +2133,15 @@ main,
 .dot {
   width: 7px;
   height: 7px;
+  flex: none;
   border-radius: 50%;
   background: var(--solar);
   box-shadow: 0 0 10px var(--solar);
+}
+
+.dot--aqua {
+  background: var(--aqua);
+  box-shadow: 0 0 10px var(--aqua);
 }
 
 .edu-list {
