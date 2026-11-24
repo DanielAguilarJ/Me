@@ -1,5 +1,6 @@
 ---
 import type { Content } from '../data/content';
+import Apps from './Apps.astro';
 import SectionHead from './SectionHead.astro';
 
 interface Props {
@@ -110,4 +111,6 @@ const p = t.projects;
       </section>
     ))
   }
+
+  <Apps t={t} start={p.items.length + 1} />
 </div>

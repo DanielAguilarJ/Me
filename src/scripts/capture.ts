@@ -31,6 +31,11 @@ const DEFS: Record<string, CaptureDef> = {
   fins: { shape: Shape.FISH, scale: 1.02, glow: 0xff6f59, time: 1.4 },
   fishapp: { shape: Shape.PHONE, scale: 0.92, glow: 0x48a8ff, time: 1.1 },
   chemnitz: { shape: Shape.SPECIMEN, scale: 0.95, glow: 0xffb54a, test: 0.78, time: 2 },
+  solarme: { shape: Shape.SOLAR, scale: 1.0, y: 0.15, glow: 0xffb54a },
+  modelbuilder: { shape: Shape.SHAFT, scale: 1.3, y: -0.08, glow: 0x48a8ff },
+  momentum: { shape: Shape.WEEKS, scale: 1.18, y: -0.14, glow: 0x4ff0d8 },
+  worldbrain: { shape: Shape.BRAIN, scale: 1.55, y: 0.05, glow: 0x9b8cff },
+  culturame: { shape: Shape.CITYMAP, scale: 1.1, y: 0.12, glow: 0xff6f59 },
 };
 
 export async function runCapture(

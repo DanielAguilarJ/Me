@@ -43,6 +43,8 @@ export const SCENES: Record<SceneId, SceneConfig> = {
   fishapp: { shape: Shape.PHONE, glow: 0x48a8ff, radius: 2.4, desktop: P(0.45, 0, 0, 0.92), portrait: { fx: 0, y: 1.0, z: -0.8, scale: 0.55, dim: 0.5 } },
   materials: { shape: Shape.SPECIMEN, glow: 0xffb54a, radius: 2.1, desktop: P(0.44, -0.05, 0, 0.92), portrait: { fx: 0, y: 0.9, z: -0.8, scale: 0.55, dim: 0.5 } },
   geospatial: { shape: Shape.TERRAIN, glow: 0x4ff0d8, radius: 2.8, desktop: P(0.42, -0.1, 0, 0.85), portrait: { fx: 0, y: 1.0, z: -0.8, scale: 0.5, dim: 0.5 } },
+  // Detrás de la cuadrícula de productos: la red, inclinada, lejana y tenue.
+  apps: { shape: Shape.NETWORK, glow: 0x4ff0d8, radius: 2.4, rotX: 0.35, desktop: P(0, 0.1, -1.8, 1.35, 0.4), portrait: { y: 0.2, z: -1.6, scale: 0.7, dim: 0.3 } },
   journey: { shape: Shape.TUNNEL, glow: 0x9b8cff, radius: 99, fit: false, desktop: P(0, 0, 0, 1), portrait: { dim: 0.75 } },
   skills: { shape: Shape.GALAXY, glow: 0x9b8cff, radius: 3.6, fit: false, desktop: P(0, 0, -1.4, 1.1, 0.75), portrait: { scale: 0.85, dim: 0.6 } },
   contact: { shape: Shape.GLOBE, glow: 0x1f8fff, radius: 3.0, fit: false, desktop: P(0, -3.05, 0, 1.65), portrait: { y: -2.2, scale: 1.05 } },

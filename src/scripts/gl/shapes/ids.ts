@@ -14,6 +14,12 @@ export const Shape = {
   GALAXY: 11,
   GEARS: 12,
   BARS: 13,
+  // Solo para las imágenes de los productos (shapes/products.ts). Deben quedar al final.
+  SOLAR: 14,
+  SHAFT: 15,
+  WEEKS: 16,
+  BRAIN: 17,
+  CITYMAP: 18,
 } as const;
 
 export type ShapeId = (typeof Shape)[keyof typeof Shape];

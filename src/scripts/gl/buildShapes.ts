@@ -30,7 +30,7 @@ const CORE: [ShapeId, Generator][] = [
 ];
 
 export const CORE_LAYERS = 12;
-export const CAPTURE_LAYERS = 14;
+export const CAPTURE_LAYERS = 19;
 
 const builder = (count: number, id: number) => new ShapeBuilder(count, mulberry32(1000 + id * 7919));
 
@@ -41,8 +41,16 @@ export async function buildShapes(
 ) {
   const list = [...CORE];
   if (opts.extra) {
-    const extra = await import('./shapes/extra');
-    list.push([Shape.GEARS, extra.gears], [Shape.BARS, extra.bars]);
+    const [extra, products] = await Promise.all([import('./shapes/extra'), import('./shapes/products')]);
+    list.push(
+      [Shape.GEARS, extra.gears],
+      [Shape.BARS, extra.bars],
+      [Shape.SOLAR, products.solar],
+      [Shape.SHAFT, products.shaft],
+      [Shape.WEEKS, products.weeks],
+      [Shape.BRAIN, products.brain],
+      [Shape.CITYMAP, products.cityMap],
+    );
   }
   for (let i = 0; i < list.length; i++) {
     const [id, gen] = list[i];

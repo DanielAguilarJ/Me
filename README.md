@@ -31,6 +31,9 @@ Todos los textos están en `src/data/content.ts`:
 - `profile`: nombre, correo, LinkedIn y rutas de los CV.
 - `es` y `en`: textos de cada idioma, con la misma estructura. Si cambias uno,
   cambia el otro.
+- `apps` (dentro de cada idioma): los productos propios, con sus enlaces. La
+  imagen de cada uno es `public/images/renders/<key>.webp` y se genera con la
+  clave del mismo nombre en `src/scripts/capture.ts`.
 
 El correo se arma en el navegador a partir de `profile.email` para que no
 aparezca completo en el HTML.

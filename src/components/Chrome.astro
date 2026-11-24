@@ -11,6 +11,8 @@ interface Props {
 }
 const { t, lang } = Astro.props;
 const labelEntries = Object.entries(t.labels);
+// Total de capítulos del HUD (hud.ts lo recalcula con la misma lista).
+const hudTotal = String(t.ui.chapters.length - 1).padStart(2, '0');
 // La flecha (U+2192) no viene en el subconjunto latino de JetBrains Mono: se dibuja como icono.
 const labelParts = (text: string) => text.split('→').map((part) => part.trim());
 // Tampoco trae los subíndices (U+2080–U+2089): se escriben como <sub> con dígitos normales.
@@ -66,7 +68,7 @@ const subParts = (text: string) =>
     <span>{t.hero.location} · <span data-clock>--:--:--</span></span>
   </div>
   <div class="hud__chapter">
-    <span class="hud__num"><span data-hud-num>00</span><em>/</em><span data-hud-total>10</span></span>
+    <span class="hud__num"><span data-hud-num>00</span><em>/</em><span data-hud-total>{hudTotal}</span></span>
     <span class="hud__name" data-hud-name>{t.ui.chapters[0]}</span>
   </div>
   <div class="hud__progress"><span data-hud-bar></span></div>

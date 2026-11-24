@@ -392,6 +392,42 @@ Sample evalShape(int id, vec4 d, vec3 rnd) {
     col = type < 0.5 ? SOLAR : (type < 1.5 ? AQUA : VIOLET);
     a = 0.7;
     s = 0.8;
+  } else if (id >= S_SOLAR) {
+    // Imágenes de los productos: el tipo elige el color y prm el brillo (6 = mapa de calor).
+    float lit = 0.35 + 0.9 * prm;
+    if (type < 0.5) {
+      col = ICE * 0.8;
+      a = 0.5 * lit;
+      s = 0.7;
+    } else if (type < 1.5) {
+      col = AQUA;
+      a = 0.8 * lit;
+      s = 0.85;
+    } else if (type < 2.5) {
+      col = SKY;
+      a = 0.75 * lit;
+      s = 0.8;
+    } else if (type < 3.5) {
+      col = SOLAR;
+      a = 0.9 * lit;
+      s = 0.75 + 0.35 * prm;
+    } else if (type < 4.5) {
+      col = CORAL;
+      a = 0.85 * lit;
+      s = 0.85;
+    } else if (type < 5.5) {
+      col = VIOLET;
+      a = 0.8 * lit;
+      s = 0.85;
+    } else if (type < 6.5) {
+      col = heat(prm);
+      a = 0.28 + 0.7 * prm;
+      s = 0.72 + 0.2 * prm;
+    } else {
+      col = mix(SKY, VIOLET, prm) * 0.4;
+      a = 0.2 * tw;
+      s = 0.6;
+    }
   } else {
     if (type < 0.5) {
       col = mix(SKY, AQUA, prm);

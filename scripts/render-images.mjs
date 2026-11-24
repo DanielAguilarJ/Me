@@ -2,7 +2,7 @@
  * Genera las imágenes del sitio renderizando la propia escena de partículas
  * (modo `?capture=<clave>`) en Chromium headless:
  *
- *   public/images/renders/<clave>.webp  Tarjetas de la trayectoria (900×600)
+ *   public/images/renders/<clave>.webp  Tarjetas de la trayectoria y de los productos (900×600)
  *   public/images/renders/hero.webp     Fondo para navegadores sin WebGL (1920×1080)
  *   public/og/og-es.jpg, og-en.jpg      Vista previa al compartir el enlace (1200×630)
  *   public/favicon-32.png               Favicon PNG (desde public/favicon.svg)
@@ -35,7 +35,21 @@ const args = new Map(
 const only = args.has('only') ? new Set(args.get('only').split(',')) : null;
 const wanted = (name) => !only || only.has(name);
 
-const CARDS = ['robotics', 'marketing', 'freelance', 'telus', 'aquaguard', 'fins', 'fishapp', 'chemnitz'];
+const CARDS = [
+  'robotics',
+  'marketing',
+  'freelance',
+  'telus',
+  'aquaguard',
+  'fins',
+  'fishapp',
+  'chemnitz',
+  'solarme',
+  'modelbuilder',
+  'momentum',
+  'worldbrain',
+  'culturame',
+];
 
 /**
  * `viewport` es el tamaño CSS de la página; se renderiza a `scale`× y se reduce

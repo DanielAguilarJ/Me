@@ -100,6 +100,7 @@ dd {
 h1,
 h2,
 h3,
+h4,
 p,
 figure {
   margin: 0;
@@ -1430,6 +1431,177 @@ main,
   transform: rotate(45deg);
 }
 
+/* ---------- Productos (apps y software) ---------- */
+.apps__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 40px;
+  align-items: end;
+  margin-bottom: clamp(30px, 5vw, 60px);
+}
+
+.apps__head .section-head {
+  margin: 0;
+}
+
+.apps__head .lead {
+  color: var(--muted);
+}
+
+/* Dos tarjetas anchas arriba y tres abajo. */
+.apps__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  perspective: 1400px;
+}
+
+.app-card {
+  --accent: var(--aqua);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(170deg, rgba(14, 22, 38, 0.88), rgba(6, 10, 18, 0.78));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transform-style: preserve-3d;
+  transition: border-color 0.4s;
+}
+
+.app-card:nth-child(-n + 2) {
+  grid-column: span 3;
+}
+
+.app-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.app-card:hover .card__glare {
+  opacity: 1;
+}
+
+.app-card > *:not(.card__glare) {
+  position: relative;
+  z-index: 1;
+}
+
+.app-card--solarme { --accent: var(--solar); }
+.app-card--modelbuilder { --accent: var(--sky); }
+.app-card--momentum { --accent: var(--aqua); }
+.app-card--worldbrain { --accent: var(--violet); }
+.app-card--culturame { --accent: var(--coral); }
+
+.app-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(79, 240, 216, 0.1), transparent 62%),
+    #060a12;
+}
+
+.app-card__media img {
+  width: 100%;
+  height: 100%;
+  /* Si la imagen falla, el texto alternativo no se pinta encima de la tarjeta. */
+  color: transparent;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease);
+}
+
+.app-card:hover .app-card__media img {
+  transform: scale(1.06);
+}
+
+.app-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 10, 18, 0.88), transparent 50%);
+}
+
+.app-card__num {
+  position: absolute;
+  bottom: 10px;
+  left: 22px;
+  z-index: 1;
+  color: transparent;
+  font-family: var(--font-outline);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  -webkit-text-stroke: 1px var(--accent);
+}
+
+.app-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 24px 24px;
+}
+
+.app-card__kicker {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.app-card__summary {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.app-card__points {
+  display: grid;
+  gap: 8px;
+}
+
+.app-card__points li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.app-card__points li::before {
+  content: '';
+  position: absolute;
+  top: 0.62em;
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--accent);
+  transform: rotate(45deg);
+}
+
+/* Los enlaces quedan al pie aunque el texto de las tarjetas vecinas sea más largo. */
+.app-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
 .widget {
   margin-top: 4px;
   padding: 16px 18px;
@@ -2312,6 +2484,24 @@ main,
   .card {
     min-height: 300px;
   }
+
+  /* Dos columnas: la quinta tarjeta ocupa todo el ancho con una imagen más baja. */
+  .apps__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .app-card,
+  .app-card:nth-child(-n + 2) {
+    grid-column: span 1;
+  }
+
+  .app-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .app-card:last-child .app-card__media {
+    aspect-ratio: 21 / 9;
+  }
 }
 
 @media (max-width: 1040px) {
@@ -2337,6 +2527,11 @@ main,
   .edu-card--certs,
   .edu-card--langs {
     grid-column: 1 / -1;
+  }
+
+  .apps__head {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .tagsphere {
@@ -2409,6 +2604,18 @@ main,
 
   .card {
     min-height: 0;
+  }
+
+  .apps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-card:last-child .app-card__media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .app-card__body {
+    padding: 14px 20px 22px;
   }
 
   .stats {

@@ -1,0 +1,75 @@
+---
+/**
+ * Productos propios: cuadrícula de tarjetas al final de Proyectos. Las imágenes se
+ * generan con la escena (`?capture=<key>`, scripts/render-images.mjs).
+ */
+import type { Content } from '../data/content';
+import Icon from './Icon.astro';
+import SectionHead from './SectionHead.astro';
+
+interface Props {
+  t: Content;
+  /** Número del primer producto: sigue a los capítulos de Proyectos. */
+  start: number;
+}
+const { t, start } = Astro.props;
+const a = t.apps;
+---
+
+<section class="section apps" id="apps" data-scene="apps" aria-labelledby="apps-title">
+  <div class="section__wide">
+    <div class="apps__head">
+      <SectionHead index={a.index} label={a.label} title={a.title} id="apps-title" level="h3" />
+      <p class="lead" data-reveal>{a.intro}</p>
+    </div>
+
+    <div class="apps__grid">
+      {
+        a.items.map((item, i) => (
+          <article class={`app-card app-card--${item.key}`} data-reveal data-tilt="3">
+            <span class="card__glare" aria-hidden="true" />
+            <figure class="app-card__media">
+              <img
+                src={`/images/renders/${item.key}.webp`}
+                alt={item.alt}
+                width="900"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="app-card__num" aria-hidden="true">
+                {String(start + i).padStart(2, '0')}
+              </span>
+            </figure>
+            <div class="app-card__body">
+              <p class="app-card__kicker">{item.kicker}</p>
+              <h4 class="app-card__title">{item.title}</h4>
+              <p class="app-card__summary">{item.summary}</p>
+              <ul class="app-card__points">
+                {item.bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+              <ul class="tags">
+                {item.tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+              {item.links.length > 0 && (
+                <div class="app-card__links">
+                  {item.links.map((l) => (
+                    <a class="btn btn--small btn--ghost" href={l.href} target="_blank" rel="noopener noreferrer">
+                      <span class="visually-hidden">{item.title}: </span>
+                      <span>{l.label}</span>
+                      <Icon name="arrow-up-right" class="icon--sm" />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
