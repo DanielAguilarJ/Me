@@ -1,7 +1,8 @@
 /**
  * Contenido del sitio en español e inglés.
  * Todo el texto sale de aquí: edita este archivo para actualizar el sitio.
- * Los datos provienen del CV de Kevin Daniel Aguilar Junco.
+ * Los datos provienen del CV de Kevin Daniel Aguilar Junco. El liderazgo y los
+ * reconocimientos (education.awards) los indicó él y no aparecen en el CV en PDF.
  */
 
 export type Lang = 'es' | 'en';
@@ -124,7 +125,7 @@ const es = {
     label: 'Quién soy',
     title: 'Energía limpia, código e <em>inteligencia artificial</em>.',
     paragraphs: [
-      'Soy Kevin Daniel Aguilar Junco, ingeniero formado en Energías Renovables en la Universidad Autónoma de Aguascalientes.',
+      'Soy Kevin Daniel Aguilar Junco, ingeniero formado en Energías Renovables en la Universidad Autónoma de Aguascalientes, donde fui presidente estudiantil de mi carrera.',
       'Llevo 3 años construyendo con Python, C++ e IA: enseñé robótica con Arduino, desarrollé apps para clientes internacionales, validé datos geoespaciales para modelos de IA y fundé AquaGuard, una startup de monitoreo del agua con sensores IoT y visión computacional.',
       'Entre 2025 y 2026 llevé mi trabajo a Europa: participé en las summer schools de la University of South Bohemia (República Checa) con proyectos de IA para acuicultura e investigué materiales para productos sostenibles en la Technische Universität Chemnitz (Alemania) con una estancia IAESTE.',
       'Me interesa que la tecnología resuelva problemas reales de agua, energía y medio ambiente: del sensor al modelo y del laboratorio al producto.',
@@ -186,6 +187,7 @@ const es = {
           'Monitoreo de calidad del agua con sensores IoT y visión computacional para la industria y el sector agropecuario.',
           'Adquisición de datos de sensores, alertas y visualización, con validación de usuarios y estrategia de producto.',
           '2.º lugar en el UAA Entrepreneurial Bootcamp 2024 con un sistema de detección de fugas industriales y monitoreo de calidad.',
+          'Finalista del Premio de Innovación Emprende MAEN.',
         ],
         tags: ['IoT', 'Visión computacional', 'Sensores', 'Producto'],
       },
@@ -380,11 +382,17 @@ const es = {
         year: '2025 · 2026',
       },
     ],
+    awardsLabel: 'Liderazgo y reconocimientos',
+    awards: [
+      { tag: 'Liderazgo', title: 'Presidente estudiantil de la carrera', org: 'Ingeniería en Energías Renovables · UAA' },
+      { tag: '2.º lugar · 2024', title: 'UAA Entrepreneurial Bootcamp', org: 'Con AquaGuard' },
+      { tag: 'Finalista', title: 'Premio de Innovación Emprende MAEN', org: 'Con AquaGuard' },
+    ],
     certsLabel: 'Certificaciones',
     certifications: [
       'Robotics and Embedded Systems with Arduino',
       'Computer Vision with OpenCV and Python',
-      'Diplomado de Inteligencia Artificial para Emprendedores y Empresarios',
+      'Diplomado de Inteligencia Artificial para Emprendedores y Empresarios · Universidad Internacional de Innovación',
       'Curso de Introducción a la Globalización, Educación No Formal y Beneficios de las Competencias Desarrolladas mediante la Movilidad Internacional',
       'Más que un Líder · Programa de Liderazgo Juvenil',
     ],
@@ -504,7 +512,7 @@ const en: Content = {
     label: 'About me',
     title: 'Clean energy, code and <em>artificial intelligence</em>.',
     paragraphs: [
-      "I'm Kevin Daniel Aguilar Junco, an engineer trained in Renewable Energy at the Universidad Autónoma de Aguascalientes.",
+      "I'm Kevin Daniel Aguilar Junco, an engineer trained in Renewable Energy at the Universidad Autónoma de Aguascalientes, where I was student president of my program.",
       "I've spent 3 years building with Python, C++ and AI: I taught robotics with Arduino, developed apps for international clients, validated geospatial data for AI models and founded AquaGuard, a water-monitoring startup using IoT sensors and computer vision.",
       'Between 2025 and 2026 I took my work to Europe: I joined the University of South Bohemia summer schools (Czech Republic) with AI projects for aquaculture, and researched materials for sustainable products at Technische Universität Chemnitz (Germany) through an IAESTE internship.',
       'I care about technology that solves real problems in water, energy and the environment: from sensor to model and from lab to product.',
@@ -566,6 +574,7 @@ const en: Content = {
           'Water-quality monitoring with IoT sensors and computer vision for industry and agriculture.',
           'Sensor data acquisition, alerts and data visualization, with stakeholder validation and product strategy.',
           '2nd place at the UAA Entrepreneurial Bootcamp 2024 with an industrial leak-detection and quality-monitoring system.',
+          'Finalist in the Emprende MAEN Innovation Award.',
         ],
         tags: ['IoT', 'Computer vision', 'Sensors', 'Product'],
       },
@@ -756,11 +765,17 @@ const en: Content = {
         year: '2025 · 2026',
       },
     ],
+    awardsLabel: 'Leadership & recognition',
+    awards: [
+      { tag: 'Leadership', title: 'Student president of the program', org: 'Renewable Energy Engineering · UAA' },
+      { tag: '2nd place · 2024', title: 'UAA Entrepreneurial Bootcamp', org: 'With AquaGuard' },
+      { tag: 'Finalist', title: 'Emprende MAEN Innovation Award', org: 'With AquaGuard' },
+    ],
     certsLabel: 'Certifications',
     certifications: [
       'Robotics and Embedded Systems with Arduino',
       'Computer Vision with OpenCV and Python',
-      'Diplomado de Inteligencia Artificial para Emprendedores y Empresarios (AI for Entrepreneurs)',
+      'Diplomado de Inteligencia Artificial para Emprendedores y Empresarios (AI for Entrepreneurs) · Universidad Internacional de Innovación',
       'Curso de Introducción a la Globalización, Educación No Formal y Beneficios de las Competencias Desarrolladas mediante la Movilidad Internacional',
       'Más que un Líder · Youth Leadership Program',
     ],

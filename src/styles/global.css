@@ -1914,6 +1914,7 @@ main,
 .edu-card--programs { grid-column: span 5; }
 .edu-card--certs { grid-column: span 7; }
 .edu-card--langs { grid-column: span 5; }
+.edu-card--awards { grid-column: 1 / -1; }
 
 .edu-card__label {
   margin-bottom: 18px;
@@ -1981,6 +1982,40 @@ main,
 }
 
 .edu-list__org {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Liderazgo y reconocimientos: tres columnas en escritorio, una en móvil. */
+.awards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 22px 32px;
+}
+
+.awards li {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.awards__tag {
+  color: var(--solar);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.awards__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.awards__org {
   color: var(--muted);
   font-size: 14px;
 }

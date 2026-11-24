@@ -36,6 +36,21 @@ const e = t.education;
         </ul>
       </article>
 
+      <article class="edu-card edu-card--awards" data-reveal>
+        <h3 class="edu-card__label">{e.awardsLabel}</h3>
+        <ul class="awards">
+          {
+            e.awards.map((a) => (
+              <li>
+                <span class="awards__tag">{a.tag}</span>
+                <span class="awards__title">{a.title}</span>
+                <span class="awards__org">{a.org}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+
       <article class="edu-card edu-card--certs" data-reveal>
         <h3 class="edu-card__label">{e.certsLabel}</h3>
         <ul class="certs">
