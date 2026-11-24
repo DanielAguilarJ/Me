@@ -1,0 +1,22 @@
+---
+import type { Content } from '../data/content';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <p>© {year} {t.footer.rights}</p>
+  <p class="footer__built">{t.footer.built}</p>
+  <a href="#top" data-scramble>{t.ui.backToTop} ↑</a>
+</footer>
+
+<div class="capture-og" aria-hidden="true">
+  <p class="capture-og__eyebrow">danieljunco.com</p>
+  <p class="capture-og__name">Daniel<br />Junco</p>
+  <p class="capture-og__role">{t.capture.role}</p>
+  <p class="capture-og__stack">{t.capture.stack}</p>
+</div>

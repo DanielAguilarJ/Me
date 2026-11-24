@@ -1,0 +1,126 @@
+---
+/**
+ * Capas fijas: lienzo WebGL, grano, etiquetas 3D, cursor, preloader, HUD y navegación.
+ */
+import { profile, type Content, type Lang } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const labelEntries = Object.entries(t.labels);
+// La flecha (U+2192) no viene en el subconjunto latino de JetBrains Mono: se dibuja como icono.
+const labelParts = (text: string) => text.split('→').map((part) => part.trim());
+// Tampoco trae los subíndices (U+2080–U+2089): se escriben como <sub> con dígitos normales.
+const subParts = (text: string) =>
+  text.split(/([\u2080-\u2089]+)/).map((chunk, n) => ({
+    sub: n % 2 === 1,
+    text: n % 2 === 1 ? Array.from(chunk, (c) => c.charCodeAt(0) - 0x2080).join('') : chunk,
+  }));
+---
+
+<a class="skip-link" href="#main">{t.ui.skip}</a>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="bg-fallback" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="gl-labels" data-gl-labels aria-hidden="true">
+  {
+    labelEntries.map(([key, text]) => (
+      <span class={`gl-label gl-label--${key}`} data-gl-label={key}>
+        <i />
+        {labelParts(text).map((part, n) => [
+          n > 0 && <Icon name="arrow-right" class="icon--sm" />,
+          <span>{subParts(part).map((s) => (s.sub ? <sub>{s.text}</sub> : s.text))}</span>,
+        ])}
+      </span>
+    ))
+  }
+</div>
+
+<div class="cursor" aria-hidden="true">
+  <span class="cursor__dot" data-cursor-dot></span>
+  <span class="cursor__ring" data-cursor-ring><span class="cursor__label" data-cursor-label></span></span>
+</div>
+
+<div class="preloader" data-preloader aria-hidden="true">
+  <div class="preloader__inner">
+    <p class="preloader__brand"><span>DJ</span> / {t.hero.eyebrow}</p>
+    <p class="preloader__num"><span data-preloader-num>000</span><small>%</small></p>
+    <ul class="preloader__steps">
+      {t.preloader.steps.map((s) => <li data-preloader-step>{s}</li>)}
+    </ul>
+    <div class="preloader__bar"><span data-preloader-bar></span></div>
+  </div>
+</div>
+
+<div class="hud" data-hud data-chapters={JSON.stringify(t.ui.chapters)} aria-hidden="true">
+  <span class="hud__corner hud__corner--tl"></span>
+  <span class="hud__corner hud__corner--tr"></span>
+  <span class="hud__corner hud__corner--bl"></span>
+  <span class="hud__corner hud__corner--br"></span>
+  <div class="hud__geo">
+    <span>{t.hero.coords}</span>
+    <span>{t.hero.location} · <span data-clock>--:--:--</span></span>
+  </div>
+  <div class="hud__chapter">
+    <span class="hud__num"><span data-hud-num>00</span><em>/</em><span data-hud-total>10</span></span>
+    <span class="hud__name" data-hud-name>{t.ui.chapters[0]}</span>
+  </div>
+  <div class="hud__progress"><span data-hud-bar></span></div>
+</div>
+
+<header class="header" data-header>
+  <a class="brand" href="#top" aria-label={`${profile.shortName}: ${t.ui.chapters[0]}`}>
+    <span class="brand__mark">DJ</span>
+    <span class="brand__name">{profile.shortName}</span>
+  </a>
+  <nav class="nav" aria-label={t.ui.menu}>
+    <ul>
+      {
+        t.nav.map((item) => (
+          <li>
+            <a href={item.href} data-nav-link data-scramble>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <div class="header__actions">
+    <a class="lang" href={t.ui.langHref} hreflang={t.ui.langHreflang} lang={t.ui.langHreflang} title={t.ui.langLabel}>
+      <span aria-hidden="true">{t.ui.langShort}</span>
+      <span class="visually-hidden">{t.ui.langLabel}</span>
+    </a>
+    <a class="btn btn--small btn--ghost" href={profile.cv[lang]} download data-magnetic="0.25">
+      {t.ui.cv}
+      <Icon name="arrow-down" class="icon--sm" />
+    </a>
+    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu">
+      <span class="visually-hidden">{t.ui.menu}</span>
+      <i></i><i></i>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" data-menu>
+  <ol class="menu__list">
+    {
+      t.nav.map((item, i) => (
+        <li>
+          <a href={item.href}>
+            <span class="menu__index">{String(i + 1).padStart(2, '0')}</span>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+  <div class="menu__foot">
+    <a href={t.ui.langHref} hreflang={t.ui.langHreflang} lang={t.ui.langHreflang}>{t.ui.langLabel}</a>
+    <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+</div>

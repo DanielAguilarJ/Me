@@ -1,0 +1,99 @@
+---
+import '@fontsource-variable/unbounded';
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/jetbrains-mono';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import 'lenis/dist/lenis.css';
+import '../styles/global.css';
+import unboundedUrl from '@fontsource-variable/unbounded/files/unbounded-latin-wght-normal.woff2?url';
+import manropeUrl from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+import outlineUrl from '../assets/fonts/unbounded-outline-700.woff2?url';
+import { content, profile, type Lang } from '../data/content';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  noindex?: boolean;
+  /** Precarga la fuente con contorno (JUNCO del hero). La 404 no la usa. */
+  preloadOutline?: boolean;
+}
+
+const { lang, title, noindex = false, preloadOutline = true } = Astro.props;
+const t = content[lang];
+const site = Astro.site ?? new URL(profile.site);
+const esUrl = new URL('/', site).href;
+const enUrl = new URL('/en/', site).href;
+const canonical = lang === 'es' ? esUrl : enUrl;
+const ogImage = new URL(t.meta.ogImage, site).href;
+const pageTitle = title ?? t.meta.title;
+
+const allSkills = t.skills.groups.flatMap((g) => g.items);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.fullName,
+  alternateName: profile.shortName,
+  url: canonical,
+  image: ogImage,
+  jobTitle: t.hero.role,
+  description: t.meta.description,
+  address: { '@type': 'PostalAddress', addressLocality: 'Aguascalientes', addressCountry: 'MX' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidad Autónoma de Aguascalientes' },
+  knowsLanguage: ['es', 'en'],
+  knowsAbout: allSkills,
+  sameAs: [profile.linkedin],
+};
+---
+
+<!doctype html>
+<html lang={t.meta.htmlLang} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={t.meta.description} />
+    <meta name="author" content={profile.fullName} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
+    <meta name="theme-color" content="#04060b" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href={unboundedUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={manropeUrl} as="font" type="font/woff2" crossorigin />
+    {preloadOutline && <link rel="preload" href={outlineUrl} as="font" type="font/woff2" crossorigin />}
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content={profile.shortName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t.meta.ogAlt} />
+    <meta property="og:locale" content={t.meta.ogLocale} />
+    <meta property="og:locale:alternate" content={t.meta.ogLocaleAlt} />
+    <meta property="profile:first_name" content="Kevin Daniel" />
+    <meta property="profile:last_name" content="Aguilar Junco" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>
+      document.documentElement.classList.replace('no-js', 'js');
+      setTimeout(function () {
+        if (!window.__booted) document.documentElement.classList.add('app-failed');
+      }, 8000);
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

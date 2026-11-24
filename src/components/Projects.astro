@@ -1,0 +1,113 @@
+---
+import type { Content } from '../data/content';
+import SectionHead from './SectionHead.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+const p = t.projects;
+---
+
+<div class="projects" id="projects">
+  <div class="section section--short projects__intro">
+    <div class="section__wide">
+      <SectionHead index={p.index} label={p.label} title={p.title} id="projects-title" />
+      <p class="lead" data-reveal>{p.intro}</p>
+    </div>
+  </div>
+
+  {
+    p.items.map((item, i) => (
+      <section class="section project" id={`project-${item.scene}`} data-scene={item.scene} aria-labelledby={`${item.scene}-title`}>
+        <article class="section__col panel project__panel">
+          <p class="project__kicker" data-reveal>
+            <span class="project__num">{String(i + 1).padStart(2, '0')}</span>
+            <span>{item.kicker}</span>
+          </p>
+          <h3 class="project__title" id={`${item.scene}-title`} data-split>
+            {item.title}
+          </h3>
+          <p class="project__meta" data-reveal>
+            <span>{item.role}</span>
+            <span>{item.place}</span>
+          </p>
+          <p class="project__summary" data-reveal>
+            {item.summary}
+          </p>
+          <ul class="project__bullets">
+            {item.bullets.map((b) => (
+              <li data-reveal>{b}</li>
+            ))}
+          </ul>
+          <ul class="tags" data-reveal>
+            {item.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+
+          {item.scene === 'aquaguard' && (
+            <div class="widget sensor" data-sensor data-reveal>
+              <div class="widget__head">
+                <span class="widget__title">
+                  <span class="pulse" aria-hidden="true" />
+                  {p.sensor.title}
+                </span>
+                <span class="widget__note">{p.sensor.note}</span>
+              </div>
+              <dl class="sensor__grid">
+                <div>
+                  <dt>{p.sensor.ph}</dt>
+                  <dd>
+                    <b data-sensor-ph>7.20</b>
+                  </dd>
+                </div>
+                <div>
+                  <dt>{p.sensor.turbidity}</dt>
+                  <dd>
+                    <b data-sensor-turb>1.80</b> NTU
+                  </dd>
+                </div>
+                <div>
+                  <dt>{p.sensor.flow}</dt>
+                  <dd>
+                    <b data-sensor-flow>3.40</b> L/min
+                  </dd>
+                </div>
+                <div>
+                  <dt>{p.sensor.leak}</dt>
+                  <dd class="is-ok">{p.sensor.leakOk}</dd>
+                </div>
+              </dl>
+              <svg class="sensor__spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+                <polyline data-sensor-spark points="0,15 100,15" />
+              </svg>
+            </div>
+          )}
+
+          {item.scene === 'materials' && (
+            <div class="widget test" data-test data-reveal>
+              <div class="widget__head">
+                <span class="widget__title">{p.test.title}</span>
+                <span class="widget__note">{p.test.note}</span>
+              </div>
+              <dl class="test__rows">
+                <div>
+                  <dt>{p.test.strain}</dt>
+                  <dd data-test-strain>0.0 %</dd>
+                </div>
+                <div>
+                  <dt>{p.test.stress}</dt>
+                  <dd data-test-stress>0.00</dd>
+                </div>
+              </dl>
+              <div class="test__bar" aria-hidden="true">
+                <span data-test-bar />
+              </div>
+            </div>
+          )}
+        </article>
+      </section>
+    ))
+  }
+</div>

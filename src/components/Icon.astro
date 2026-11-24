@@ -1,0 +1,80 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className = '' } = Astro.props;
+---
+
+<svg
+  class={`icon ${className}`}
+  viewBox="0 0 48 48"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {
+    name === 'water' && (
+      <>
+        <path d="M24 6c6.5 8 11 14.2 11 19.6A11 11 0 0 1 13 25.6C13 20.2 17.5 14 24 6Z" />
+        <path d="M18.5 27.5a5.5 5.5 0 0 0 5.5 5" />
+        <path d="M6 41c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2 3-2 6-2 3 2 6 2" />
+      </>
+    )
+  }
+  {
+    name === 'ai' && (
+      <>
+        <path d="M6 14V8a2 2 0 0 1 2-2h6M34 6h6a2 2 0 0 1 2 2v6M42 34v6a2 2 0 0 1-2 2h-6M14 42H8a2 2 0 0 1-2-2v-6" />
+        <path d="M11 24s4.8-8 13-8 13 8 13 8-4.8 8-13 8-13-8-13-8Z" />
+        <circle cx="24" cy="24" r="3.6" />
+      </>
+    )
+  }
+  {
+    name === 'data' && (
+      <>
+        <circle cx="24" cy="24" r="16" />
+        <path d="M8 24h32M24 8c4.4 4.4 6.6 9.7 6.6 16S28.4 35.6 24 40M24 8c-4.4 4.4-6.6 9.7-6.6 16S19.6 35.6 24 40" />
+        <circle cx="33" cy="15" r="2.4" fill="currentColor" stroke="none" />
+      </>
+    )
+  }
+  {
+    name === 'software' && (
+      <>
+        <rect x="13" y="13" width="22" height="22" rx="3" />
+        <rect x="19" y="19" width="10" height="10" rx="1.5" />
+        <path d="M19 6v7M29 6v7M19 35v7M29 35v7M6 19h7M6 29h7M35 19h7M35 29h7" />
+      </>
+    )
+  }
+  {
+    name === 'arrow-down' && <path d="M24 8v32M12 28l12 12 12-12" />
+  }
+  {
+    name === 'arrow-up-right' && <path d="M14 34 34 14M18 14h16v16" />
+  }
+  {
+    name === 'arrow-right' && <path d="M8 24h32M28 12l12 12-12 12" />
+  }
+  {
+    name === 'copy' && (
+      <>
+        <rect x="16" y="16" width="22" height="24" rx="3" />
+        <path d="M10 32V10a2 2 0 0 1 2-2h18" />
+      </>
+    )
+  }
+  {
+    name === 'mail' && (
+      <>
+        <rect x="6" y="11" width="36" height="26" rx="3" />
+        <path d="m7 13 17 13 17-13" />
+      </>
+    )
+  }
+</svg>

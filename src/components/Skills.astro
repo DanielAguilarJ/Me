@@ -1,0 +1,50 @@
+---
+import type { Content, Lang } from '../data/content';
+import SectionHead from './SectionHead.astro';
+
+interface Props {
+  t: Content;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const s = t.skills;
+const marquee = [...s.marquee, ...s.marquee];
+---
+
+<section class="section skills" id="skills" data-scene="skills" aria-labelledby="skills-title">
+  <div class="section__wide skills__grid">
+    <div class="skills__info panel">
+      <SectionHead index={s.index} label={s.label} title={s.title} id="skills-title" />
+      <p class="lead" data-reveal>{s.intro}</p>
+      <ul class="skills__legend">
+        {
+          s.groups.map((g) => (
+            <li class={`legend legend--${g.key}`} data-reveal>
+              <i aria-hidden="true" />
+              <span class="legend__name">{g.name}</span>
+              <span class="legend__count">{String(g.items.length).padStart(2, '0')}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="tagsphere" data-tagsphere data-cursor={lang === 'es' ? 'Arrastra' : 'Drag'}>
+      <ul class="tagsphere__list" aria-labelledby="skills-title">
+        {s.groups.flatMap((g) => g.items.map((item) => <li class={`tag tag--${g.key}`} data-tag>{item}</li>))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" data-marquee aria-hidden="true">
+  <div class="marquee__track" data-marquee-track>
+    {
+      marquee.map((w) => (
+        <span>
+          {w}
+          <i />
+        </span>
+      ))
+    }
+  </div>
+</div>

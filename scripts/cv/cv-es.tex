@@ -1,0 +1,90 @@
+% CV en español (versión 3 proporcionada por Daniel).
+% Compila con pdfLaTeX (Overleaf) o con XeLaTeX/Tectonic:
+%   tectonic scripts/cv/cv-es.tex --outdir public/cv
+\documentclass[10pt,a4paper]{article}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage{cmap}
+  \usepackage{lmodern}
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\else
+  \usepackage{fontspec} % Latin Modern por defecto
+\fi
+\usepackage[margin=0.55in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={CV - Kevin Daniel Aguilar Junco}, pdfauthor={Kevin Daniel Aguilar Junco}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\raggedright
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=2000
+\setlist[itemize]{label={-}, leftmargin=1.2em, topsep=2pt, itemsep=1.5pt, parsep=0pt, partopsep=0pt}
+\newcommand{\cvsection}[1]{\par\vspace{7pt}{\large\textbf{\MakeUppercase{#1}}}\par\vspace{1pt}\hrule\vspace{4pt}}
+\begin{document}
+\small
+{\LARGE\textbf{Kevin Daniel Aguilar Junco}}\par
+\vspace{2pt}
+{\large Ingeniería en Energías Renovables | Python, C++ e IA}\par
+\vspace{2pt}
+Aguascalientes, México | 5535464080 | \href{mailto:juncokevin@hotmail.com}{juncokevin@hotmail.com} | \href{https://www.linkedin.com/in/kevin-daniel-aguilar-junco-7085a13b1}{linkedin.com/in/kevin-daniel-aguilar-junco-7085a13b1}\par
+\cvsection{Perfil profesional}
+3 años de experiencia en Python, C++ e inteligencia artificial (IA), con aplicaciones al monitoreo y cuidado del agua y al desarrollo de productos sostenibles. Formación en energías renovables y experiencia en análisis de materiales y validación de información geoespacial. Soluciones tecnológicas para la industria y el sector agropecuario.\par
+\cvsection{Habilidades técnicas}
+\textbf{Agua y sostenibilidad:} monitoreo de calidad del agua, Internet de las cosas (IoT), productos sostenibles.\par
+\textbf{Análisis:} MATLAB, Microsoft Power BI, Big Data, información geoespacial, inteligencia de fuentes abiertas (OSINT).\par
+\textbf{Inteligencia artificial:} TensorFlow, PyTorch, YOLO, Mask R-CNN, OpenCV, visión computacional.\par
+\textbf{Programación y aplicaciones:} C, JavaScript, HTML/CSS, React Native, Flutter, Git/GitHub.\par
+\textbf{Robótica y educación:} Arduino, Scratch, ciencia, tecnología, ingeniería, artes y matemáticas (STEAM).\par
+\cvsection{Experiencia profesional}
+\textbf{Research Intern - Sustainable Product Development}\hfill 2026\par
+Technische Universität Chemnitz\par
+\begin{itemize}
+\item Analicé resistencia y rigidez de materiales con experimentos mecánicos, simulaciones, MATLAB e IA para el desarrollo de productos sostenibles.
+\end{itemize}
+\textbf{Fundador \& CEO}\hfill 2025\par
+AquaGuard, Aguascalientes, México\par
+\begin{itemize}
+\item Soluciones de monitoreo y cuidado del agua con sensores IoT y visión computacional para la industria y el sector agropecuario.
+\item Participación en el UAA Entrepreneurial Bootcamp 2024 con AquaGuard: detección industrial de fugas y monitoreo de calidad del agua.
+\end{itemize}
+\textbf{AI Data Quality Analyst \& Geospatial Intelligence Specialist}\hfill 2024\par
+TELUS Digital, México\par
+\begin{itemize}
+\item Validación de datos geoespaciales, comerciales y puntos de interés de México con imágenes satelitales, bases de datos y OSINT.
+\item Evaluación de búsquedas, noticias y audio; reportes de calidad para anotación de datos y aprendizaje automático.
+\end{itemize}
+\textbf{Freelance Technology Developer}\hfill 2023\par
+Fiverr, Remoto\par
+\begin{itemize}
+\item Aplicaciones móviles y web con JavaScript y HTML/CSS para clientes internacionales.
+\item Soluciones de analítica de marketing, segmentación de clientes y automatización de procesos empresariales.
+\end{itemize}
+\textbf{Marketing Trainer}\hfill 2022\par
+WorldBrain Mexico, Aguascalientes, México\par
+\begin{itemize}
+\item Capacité a equipos en marketing digital, automatización de campañas, redes sociales y analítica; apliqué Big Data al posicionamiento de marcas.
+\end{itemize}
+\textbf{Robotics Programming Instructor}\hfill 2021\par
+WorldBrain Mexico, Aguascalientes, México\par
+\begin{itemize}
+\item Impartí programación y robótica con C++, Arduino, Scratch y metodología STEAM; preparé a participantes para finales regionales de competencias.
+\end{itemize}
+\cvsection{Proyectos}
+\begin{itemize}
+\item Colaboré con University of South Bohemia en segmentación y clasificación de aletas de peces mediante YOLO, Mask R-CNN y OpenCV.
+\end{itemize}
+Aplicación móvil para identificación individual de peces mediante videos y reconocimiento en servidor, VSB-TUO, Ostrava (2026).\par
+\cvsection{Educación}
+\textbf{Ingeniería en Energías Renovables}, Universidad Autónoma de Aguascalientes. Carta de término en trámite.\par
+\cvsection{Certificaciones}
+Curso de Introducción a la Globalización, Educación No Formal y Beneficios de las Competencias Desarrolladas mediante la Movilidad Internacional.\par
+Diplomado de Inteligencia Artificial para Emprendedores y Empresarios; Más que un Líder - Programa de Liderazgo Juvenil.\par
+Robotics and Embedded Systems with Arduino; Computer Vision with OpenCV and Python.\par
+\cvsection{Idiomas}
+Español, Inglés.\par
+\end{document}

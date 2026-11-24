@@ -1,0 +1,49 @@
+---
+import { profile, type Content } from '../data/content';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+const c = t.contact;
+const { user, domain } = profile.email;
+---
+
+<section class="section contact" id="contact" data-scene="contact" aria-labelledby="contact-title">
+  <div class="contact__inner">
+    <SectionHead index={c.index} label={c.label} title={c.title} id="contact-title" />
+    <p class="contact__text" data-reveal>{c.text}</p>
+    <div class="contact__actions" data-reveal>
+      <a class="btn btn--primary btn--xl" href="#contact" data-email data-user={user} data-domain={domain} data-magnetic="0.3" data-no-shock>
+        <Icon name="mail" class="icon--sm" />
+        <span>{c.emailCta}</span>
+      </a>
+      <div class="contact__email">
+        <a href="#contact" data-email data-user={user} data-domain={domain}>
+          <span data-email-text>{user} [at] {domain}</span>
+        </a>
+        <button class="icon-btn" type="button" data-copy-email data-user={user} data-domain={domain} data-copied={c.copied} aria-label={c.copy} title={c.copy}>
+          <Icon name="copy" />
+        </button>
+      </div>
+      <div class="contact__links">
+        <a class="btn btn--ghost" href={profile.linkedin} target="_blank" rel="noopener noreferrer" data-magnetic="0.25">
+          <span>{c.linkedin}</span>
+          <Icon name="arrow-up-right" class="icon--sm" />
+        </a>
+        <a class="btn btn--ghost" href={profile.cv.es} download hreflang="es" data-magnetic="0.25">
+          <span>{c.cvEs}</span>
+          <Icon name="arrow-down" class="icon--sm" />
+        </a>
+        <a class="btn btn--ghost" href={profile.cv.en} download hreflang="en" data-magnetic="0.25">
+          <span>{c.cvEn}</span>
+          <Icon name="arrow-down" class="icon--sm" />
+        </a>
+      </div>
+    </div>
+    <p class="contact__loc" data-reveal>{c.location} · <span data-clock>--:--:--</span></p>
+  </div>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+</section>

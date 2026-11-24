@@ -1,0 +1,50 @@
+---
+import type { Content } from '../data/content';
+import Icon from './Icon.astro';
+import SectionHead from './SectionHead.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+const j = t.journey;
+---
+
+<section class="section journey" id="journey" data-scene="journey" data-journey aria-labelledby="journey-title">
+  <div class="journey__head">
+    <SectionHead index={j.index} label={j.label} title={j.title} id="journey-title" />
+    <div class="journey__side">
+      <p class="lead" data-reveal>{j.intro}</p>
+      <p class="journey__hint" aria-hidden="true">{j.hint} <span><Icon name="arrow-right" class="icon--sm" /></span></p>
+    </div>
+  </div>
+  <div class="journey__viewport">
+    <div class="journey__line" aria-hidden="true"><span data-journey-fill></span></div>
+    <ol class="journey__track" data-journey-track>
+      {
+        j.items.map((item) => (
+          <li class="jcard" data-journey-card>
+            <figure class="jcard__media">
+              <img
+                src={`/images/renders/${item.image}.webp`}
+                alt={item.alt}
+                width="900"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="jcard__year">{item.year}</figcaption>
+            </figure>
+            <div class="jcard__body">
+              <h3 class="jcard__role">{item.role}</h3>
+              <p class="jcard__org">
+                {item.org} · {item.place}
+              </p>
+              <p class="jcard__text">{item.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+import type { Content } from '../data/content';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+const s = t.services;
+---
+
+<section class="section services" id="services" data-scene="services" aria-labelledby="services-title">
+  <div class="section__wide">
+    <div class="services__head">
+      <SectionHead index={s.index} label={s.label} title={s.title} id="services-title" />
+      <p class="lead" data-reveal>{s.intro}</p>
+    </div>
+    <div class="cards">
+      {
+        s.items.map((item, i) => (
+          <article class={`card card--${item.key}`} data-tilt="7" data-reveal>
+            <span class="card__glare" aria-hidden="true" />
+            <div class="card__top">
+              <Icon name={item.key} class="card__icon" />
+              <span class="card__index">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <h3 class="card__title">{item.title}</h3>
+            <p class="card__text">{item.text}</p>
+            <ul class="tags">
+              {item.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+% English CV (transcribed from the English PDF provided by Daniel).
+% Compiles with pdfLaTeX (Overleaf) or XeLaTeX/Tectonic:
+%   tectonic scripts/cv/cv-en.tex --outdir public/cv
+\documentclass[10pt,a4paper]{article}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage{cmap}
+  \usepackage{lmodern}
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\else
+  \usepackage{fontspec} % Latin Modern by default
+\fi
+\usepackage[margin=0.55in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={CV - Kevin Daniel Aguilar Junco}, pdfauthor={Kevin Daniel Aguilar Junco}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\raggedright
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=2000
+\setlist[itemize]{label={-}, leftmargin=1.2em, topsep=2pt, itemsep=1.5pt, parsep=0pt, partopsep=0pt}
+\newcommand{\cvsection}[1]{\par\vspace{7pt}{\large\textbf{\MakeUppercase{#1}}}\par\vspace{1pt}\hrule\vspace{4pt}}
+\begin{document}
+\small
+{\LARGE\textbf{Kevin Daniel Aguilar Junco}}\par
+\vspace{2pt}
+{\large Renewable Energy Engineering | Python, C++ and Artificial Intelligence (AI)}\par
+\vspace{2pt}
+{\footnotesize Aguascalientes, Mexico | +52 55 3546 4080 | \href{mailto:juncokevin@hotmail.com}{juncokevin@hotmail.com} | \href{https://www.linkedin.com/in/kevin-daniel-aguilar-junco-7085a13b1}{linkedin.com/in/kevin-daniel-aguilar-junco-7085a13b1}}\par
+\cvsection{Summary}
+Renewable Energy Engineering background with 3 years of experience in Python, C++ and artificial intelligence (AI), plus analytic evaluation, design analysis and communication skills. Experience includes mechanical tests, simulation, applied AI and technical documentation for sustainable product development in Germany, aquaculture projects in the Czech Republic and software projects for international clients from requirements to delivery.\par
+\cvsection{Skills}
+\textbf{Analysis:} analytic evaluation, design analysis, MATLAB, simulation, satellite imagery, POI data, data quality.\par
+\textbf{Systems and delivery:} Python, C++, Arduino, IoT sensors, APIs, technical documentation, client communication.\par
+\cvsection{Professional experience}
+\textbf{Research Intern - Sustainable Product Development}\hfill 2026\par
+Technische Universität Chemnitz, Chemnitz, Germany\par
+\begin{itemize}
+\item Analyzed material resistance and stiffness through mechanical experiments and analytic evaluation in MATLAB.
+\item Supported design analysis of component behavior and alternatives through simulation.
+\item Prepared technical documentation of experimental methods and findings in English for the research team.
+\end{itemize}
+\textbf{Founder \& CEO}\hfill 2025\par
+AquaGuard, Aguascalientes, Mexico\par
+\begin{itemize}
+\item Solutions for water monitoring with IoT sensors, computer vision, sensor acquisition, alerts and data visualization for industry and agriculture, with stakeholder validation and product strategy.
+\item Participation in the UAA Entrepreneurial Bootcamp 2024 with AquaGuard: industrial leak detection and water quality monitoring.
+\end{itemize}
+\textbf{AI Data Quality Analyst \& Geospatial Intelligence Specialist}\hfill 2024\par
+TELUS Digital, Mexico\par
+\begin{itemize}
+\item Validation of digital maps and POI data through satellite imagery, authoritative sources and OSINT methods.
+\item Evaluation of search, news, audio and map-related data against structured relevance frameworks for AI products.
+\item Preparation of structured quality outputs in accordance with data annotation guidelines and model requirements.
+\end{itemize}
+\textbf{Freelance Software \& AI Developer}\hfill 2023\par
+Fiverr\par
+\begin{itemize}
+\item Management of mobile and web software projects for international clients, from requirements and implementation through delivery and support, with direct communication in English and Spanish.
+\end{itemize}
+\textbf{Marketing Trainer}\hfill 2022\par
+WorldBrain Mexico, Aguascalientes, Mexico\par
+\begin{itemize}
+\item Trained teams in digital marketing, campaign automation, social media management and data analysis through workshops.
+\end{itemize}
+\textbf{Robotics Programming Instructor}\hfill 2021\par
+WorldBrain Mexico, Aguascalientes, Mexico\par
+\begin{itemize}
+\item Taught Arduino, C/C++ and Python through hands-on robotics projects with sensors, actuators and introductory AI, plus STEAM methods focused on logical reasoning and problem-solving.
+\end{itemize}
+\cvsection{Projects}
+\textbf{Summer School, Institute of Aquaculture and Protection of Waters}\hfill 2025, 2026\par
+University of South Bohemia in České Budějovice, Nové Hrady, Czech Republic\par
+\begin{itemize}
+\item Worked on the project \textit{Mobile app for fish identification} (2026).
+\item Participated in the project \textit{Fish fins morphology detection and classification using AI} (2025).
+\end{itemize}
+\cvsection{Education}
+\textbf{Renewable Energy Engineering}, Universidad Autónoma de Aguascalientes. Completion letter pending.\par
+\cvsection{Certifications}
+Robotics and Embedded Systems with Arduino\par
+Computer Vision with OpenCV and Python\par
+Diplomado de Inteligencia Artificial para Emprendedores y Empresarios\par
+Curso de Introducción a la Globalización, Educación No Formal y Beneficios de las Competencias Desarrolladas mediante la Movilidad Internacional\par
+Más que un Líder - Programa de Liderazgo Juvenil\par
+\cvsection{Languages}
+Spanish, English\par
+\end{document}

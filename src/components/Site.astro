@@ -1,0 +1,36 @@
+---
+import { content, type Lang } from '../data/content';
+import Chrome from './Chrome.astro';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import Services from './Services.astro';
+import Projects from './Projects.astro';
+import Journey from './Journey.astro';
+import Skills from './Skills.astro';
+import Education from './Education.astro';
+import Contact from './Contact.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = content[lang];
+---
+
+<Chrome t={t} lang={lang} />
+<main id="main">
+  <Hero t={t} lang={lang} />
+  <About t={t} />
+  <Services t={t} />
+  <Projects t={t} />
+  <Journey t={t} />
+  <Skills t={t} lang={lang} />
+  <Education t={t} />
+  <Contact t={t} />
+</main>
+<Footer t={t} />
+
+<script>
+  import '../scripts/main';
+</script>

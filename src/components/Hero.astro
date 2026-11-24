@@ -1,0 +1,51 @@
+---
+import { profile, type Content, type Lang } from '../data/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const h = t.hero;
+// data-gl-avoid marca los textos que las etiquetas del globo no deben tapar (story/labels.ts).
+---
+
+<section class="section hero" id="top" data-scene="hero" aria-labelledby="hero-title">
+  <div class="hero__inner">
+    <p class="hero__status" data-hero-fade data-gl-avoid>
+      <span class="pulse" aria-hidden="true"></span>
+      {h.status}
+    </p>
+    <p class="hero__eyebrow" data-hero-fade data-gl-avoid>
+      <span>{profile.fullName}</span><span class="hero__eyebrow-sep" aria-hidden="true"> — </span><span
+        class="hero__eyebrow-tail">{h.eyebrow}</span>
+    </p>
+    <h1 class="hero__title" id="hero-title">
+      <span class="visually-hidden">{profile.fullName}</span>
+      <span class="hero__line" data-hero-line data-gl-avoid aria-hidden="true">{h.lines[0]}</span>
+      <span class="hero__line hero__line--outline" data-hero-line data-gl-avoid aria-hidden="true">{h.lines[1]}</span>
+    </h1>
+    <div class="hero__meta" data-hero-fade data-gl-avoid>
+      <p class="hero__role">{h.role}</p>
+      <ul class="hero__stack">
+        {h.stack.map((s) => <li>{s}</li>)}
+      </ul>
+    </div>
+    <p class="hero__statement" data-hero-fade data-gl-avoid set:html={h.statement} />
+    <div class="hero__ctas" data-hero-fade data-gl-avoid>
+      <a class="btn btn--primary" href="#about" data-magnetic="0.3">
+        <span>{h.ctaPrimary}</span>
+        <Icon name="arrow-down" class="icon--sm" />
+      </a>
+      <a class="btn btn--ghost" href={profile.cv[lang]} download data-magnetic="0.3">
+        <span>{h.ctaSecondary}</span>
+        <span class="btn__tag">PDF</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero__scroll" data-hero-fade aria-hidden="true">
+    <span>{h.scroll}</span>
+    <i></i>
+  </div>
+</section>

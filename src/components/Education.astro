@@ -1,0 +1,66 @@
+---
+import type { Content } from '../data/content';
+import SectionHead from './SectionHead.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+const e = t.education;
+---
+
+<section class="section education" id="education" aria-labelledby="education-title">
+  <div class="section__wide">
+    <SectionHead index={e.index} label={e.label} title={e.title} id="education-title" />
+    <div class="edu-grid">
+      <article class="edu-card edu-card--degree" data-reveal data-tilt="4">
+        <span class="card__glare" aria-hidden="true"></span>
+        <h3 class="edu-card__label">{e.degreeLabel}</h3>
+        <p class="edu-card__title">{e.degree.title}</p>
+        <p class="edu-card__school">{e.degree.school}</p>
+        <p class="edu-card__note"><span class="dot" aria-hidden="true"></span>{e.degree.note}</p>
+      </article>
+
+      <article class="edu-card edu-card--programs" data-reveal>
+        <h3 class="edu-card__label">{e.programsLabel}</h3>
+        <ul class="edu-list">
+          {
+            e.programs.map((p) => (
+              <li>
+                <span class="edu-list__year">{p.year}</span>
+                <span class="edu-list__title">{p.title}</span>
+                <span class="edu-list__org">{p.org}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+
+      <article class="edu-card edu-card--certs" data-reveal>
+        <h3 class="edu-card__label">{e.certsLabel}</h3>
+        <ul class="certs">
+          {e.certifications.map((c) => <li>{c}</li>)}
+        </ul>
+      </article>
+
+      <article class="edu-card edu-card--langs" data-reveal>
+        <h3 class="edu-card__label">{e.languagesLabel}</h3>
+        <ul class="langs">
+          {
+            e.languages.map((l) => (
+              <li>
+                <div class="langs__row">
+                  <span class="langs__name">{l.name}</span>
+                  <span class="langs__level">{l.level}</span>
+                </div>
+                <div class="meter" aria-hidden="true">
+                  <span data-meter={l.value} />
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
