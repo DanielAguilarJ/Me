@@ -89,7 +89,7 @@ src/
     ui/            Precarga, navegación, HUD, animaciones de entrada y widgets
   styles/          global.css
 scripts/           Generadores (imágenes, globo, fuente) y CV en LaTeX
-public/            Archivos que se copian tal cual (CV, imágenes, CNAME)
+public/            Archivos que se copian tal cual (CV, imágenes, iconos)
 ```
 
 ## Accesibilidad y rendimiento
@@ -101,9 +101,17 @@ public/            Archivos que se copian tal cual (CV, imágenes, CNAME)
 - La calidad de la escena baja sola si los fotogramas tardan demasiado.
   `?hq` en la URL desactiva ese ajuste (útil para pruebas).
 
-## Publicar
+## Publicar en Vercel
 
-El resultado de `npm run build` (`dist/`) es estático y funciona en cualquier
-hosting. En GitHub Pages publicado con GitHub Actions, el dominio se configura en
-Settings → Pages: ahí se ignora `public/CNAME`, que solo cuenta si se publica
-desde una rama.
+El sitio es estático: `npm run build` genera `dist/` y no hace falta adaptador.
+
+1. Importa el repositorio en Vercel. Detecta Astro solo (`npm run build`,
+   carpeta `dist`) y publica de nuevo con cada push a `main`.
+2. En **Settings → Domains** agrega `danieljunco.com` y `www.danieljunco.com`,
+   con una redirección de uno al otro.
+3. En el DNS de Hostinger crea los registros que muestra Vercel: un registro A
+   para `@` y un CNAME para `www`. Antes borra los registros del dominio
+   estacionado, incluido cualquier AAAA.
+
+`vercel.json` le indica al navegador que guarde por un año los archivos de
+`/_astro/`, que llevan un hash en el nombre y cambian de nombre en cada versión.
